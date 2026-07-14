@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check eligibility — Smart Lender</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="brand" href="{{ url_for('home') }}"><span class="mark"></span> Smart Lender</a>
+    <a class="nav-cta" href="{{ url_for('home') }}">Back home</a>
+  </div>
+
+  <div class="form-page">
+    <h1>Enter applicant details</h1>
+    <p class="sub">All fields are required. Figures are annual/monthly income in the same currency unit used during training.</p>
+
+    <form action="{{ url_for('submit') }}" method="POST">
+
+      <div class="field">
+        <label for="Gender">Gender</label>
+        <select id="Gender" name="Gender" required>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="Married">Marital status</label>
+        <select id="Married" name="Married" required>
+          <option value="Yes">Married</option>
+          <option value="No">Not married</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="Dependents">Dependents</label>
+        <select id="Dependents" name="Dependents" required>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3+">3+</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="Education">Education</label>
+        <select id="Education" name="Education" required>
+          <option value="Graduate">Graduate</option>
+          <option value="Not Graduate">Not graduate</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="Self_Employed">Self employed</label>
+        <select id="Self_Employed" name="Self_Employed" required>
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="Property_Area">Property area</label>
+        <select id="Property_Area" name="Property_Area" required>
+          <option value="Urban">Urban</option>
+          <option value="Semiurban">Semiurban</option>
+          <option value="Rural">Rural</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="ApplicantIncome">Applicant income</label>
+        <input type="number" step="1" min="0" id="ApplicantIncome" name="ApplicantIncome" placeholder="e.g. 5000" required>
+      </div>
+
+      <div class="field">
+        <label for="CoapplicantIncome">Co-applicant income</label>
+        <input type="number" step="1" min="0" id="CoapplicantIncome" name="CoapplicantIncome" placeholder="e.g. 0" required>
+      </div>
+
+      <div class="field">
+        <label for="LoanAmount">Loan amount (thousands)</label>
+        <input type="number" step="1" min="0" id="LoanAmount" name="LoanAmount" placeholder="e.g. 150" required>
+      </div>
+
+      <div class="field">
+        <label for="Loan_Amount_Term">Loan term (days)</label>
+        <input type="number" step="1" min="0" id="Loan_Amount_Term" name="Loan_Amount_Term" placeholder="e.g. 360" required>
+      </div>
+
+      <div class="field full">
+        <label for="Credit_History">Credit history meets guidelines?</label>
+        <select id="Credit_History" name="Credit_History" required>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit">Get prediction</button>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prediction result — Smart Lender</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="brand" href="{{ url_for('home') }}"><span class="mark"></span> Smart Lender</a>
+    <a class="nav-cta" href="{{ url_for('predict_form') }}">New prediction</a>
+  </div>
+
+  <div class="result-page">
+    <span class="badge {{ 'approved' if approved else 'rejected' }}">
+      {{ '✓ Loan Approved' if approved else '✕ Loan Rejected' }}
+    </span>
+    <h1>{{ 'This application looks eligible' if approved else 'This application looks high-risk' }}</h1>
+    <p class="prob">Model confidence: {{ probability }}</p>
+
+    <div class="detail-grid">
+      <div class="cell"><div class="k">Applicant income</div><div class="v">{{ applicant.ApplicantIncome }}</div></div>
+      <div class="cell"><div class="k">Co-applicant income</div><div class="v">{{ applicant.CoapplicantIncome }}</div></div>
+      <div class="cell"><div class="k">Loan amount</div><div class="v">{{ applicant.LoanAmount }}</div></div>
+      <div class="cell"><div class="k">Loan term (days)</div><div class="v">{{ applicant.Loan_Amount_Term }}</div></div>
+      <div class="cell"><div class="k">Credit history OK</div><div class="v">{{ 'Yes' if applicant.Credit_History == 1 else 'No' }}</div></div>
+      <div class="cell"><div class="k">Dependents</div><div class="v">{{ applicant.Dependents }}</div></div>
+    </div>
+
+    <a class="btn btn-ghost" href="{{ url_for('predict_form') }}">Run another prediction</a>
+  </div>
+
+</body>
+</html>

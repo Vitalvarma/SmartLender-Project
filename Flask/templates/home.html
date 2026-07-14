@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Lender — Loan Eligibility Prediction</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand"><span class="mark"></span> Smart Lender</div>
+    <a class="nav-cta" href="{{ url_for('predict_form') }}">Check eligibility</a>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">Loan eligibility · powered by XGBoost</div>
+    <h1>Know if a loan will be approved before you file the paperwork.</h1>
+    <p class="lede">
+      Smart Lender scores an applicant's income, credit history, and household
+      details against a model trained on historical loan outcomes — giving
+      credit officers and applicants an instant, data-backed read before
+      manual underwriting begins.
+    </p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="{{ url_for('predict_form') }}">Run a prediction</a>
+      <a class="btn btn-ghost" href="https://github.com/" target="_blank" rel="noopener">View the code</a>
+    </div>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat"><div class="num">96.5%</div><div class="label">Training accuracy</div></div>
+    <div class="stat"><div class="num">81.0%</div><div class="label">Test accuracy</div></div>
+    <div class="stat"><div class="num">4</div><div class="label">Models compared</div></div>
+    <div class="stat"><div class="num">11</div><div class="label">Applicant features</div></div>
+  </div>
+
+  <div class="section">
+    <h2>How a prediction gets made</h2>
+    <div class="pipeline">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Applicant details</h3>
+        <p>Income, credit history, education, dependents, and property area are collected through a short form.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Preprocessing</h3>
+        <p>Inputs are encoded and scaled the same way the training data was — using the saved scaler.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Model inference</h3>
+        <p>The trained XGBoost classifier, the best performer of four models tested, scores the application.</p>
+      </div>
+      <div class="step">
+        <div class="n">04</div>
+        <h3>Result</h3>
+        <p>An Approved / Rejected outcome is returned with the model's confidence.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>Smart Lender — a machine learning demo for automated loan eligibility screening.</footer>
+
+</body>
+</html>
