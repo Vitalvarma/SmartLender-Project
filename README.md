@@ -152,4 +152,4 @@ Alongside the code, this repo includes the full project-lifecycle documentation
 
 Code github LINK: https://github.com/Vitalvarma/SmartLender
 
-Demonstration video LINK: 
+Demonstration video LINK: https://drive.google.com/drive/folders/1OPXaxNiQ5e9MVcBHjqTnQvVisoP51RPK?usp=drive_link
